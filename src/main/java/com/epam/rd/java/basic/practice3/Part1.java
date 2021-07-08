@@ -1,7 +1,8 @@
 package com.epam.rd.java.basic.practice3;
 
-import java.util.Arrays;
-import java.util.Iterator;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 
 public class Part1 {
 
@@ -25,13 +26,18 @@ public class Part1 {
     }
 
     public static String convert1(String input) {
-        Iterator<String> i = Arrays.stream(textData.split(System.lineSeparator())).iterator();
+
         StringBuilder sb = new StringBuilder();
-        i.next();
-        while (i.hasNext()){
-            String []line = i.next().split(";");
-            sb.append(line[0]).append(": ").append(line[2]);
-            sb.append(System.lineSeparator());
+        try {
+            BufferedReader reader = new BufferedReader(new StringReader(input));
+            reader.readLine();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                sb.append(parts[0]).append(": ").append(parts[2]);
+                sb.append(System.lineSeparator());
+            }
+        } catch (IOException e) {
         }
         return sb.toString();
     }
