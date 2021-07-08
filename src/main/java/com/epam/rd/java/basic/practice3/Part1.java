@@ -50,8 +50,9 @@ public class Part1 {
                 sb.append(words[0]).append(": ").append(words[2]);
                 break;
             case 2:
-                sb.append(words[1]).append(" (email: ").append(words[2]);
-                sb.append(")");
+                String[] nameParts = words[1].split(" ");
+                sb.append(String.format("%s %s (email: %s)",
+                        nameParts[1], nameParts[0], words[2]));
                 break;
             case 4:
                 sb.append(words[0]).append(";").append(words[1]).append(";");
