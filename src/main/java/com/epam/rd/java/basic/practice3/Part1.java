@@ -1,9 +1,6 @@
 package com.epam.rd.java.basic.practice3;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
