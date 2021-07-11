@@ -8,8 +8,6 @@ public class Part5 {
             String r = decimal2Roman(n);
             System.out.printf("%d --> %s --> %d%n", n, r, roman2Decimal(r));
         }
-        String r = decimal2Roman(2021);
-        System.out.printf("%d --> %s --> %d%n", 2021, r, roman2Decimal(r));
     }
 
     public static String decimal2Roman(int dec) {
