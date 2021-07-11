@@ -27,21 +27,21 @@ public class Part6 {
     }
 
     private static boolean isRecurring(String word, String input) {
-        int index = 0;
-        int count = 0;
-        while (count < 2) {
-            index = input.indexOf(word, index);
-            if (index == -1) {
-                return false;
-            }
-            count++;
-            index += word.length();
-        }
-        return true;
+//        int index = 0;
+//        int count = 0;
+//        while (count < 2) {
+//            index = input.indexOf(word, index);
+//            if (index == -1) {
+//                return false;
+//            }
+//            count++;
+//            index += word.length();
+//        }
+//        return true;
 
 
-//        Pattern r = Pattern.compile("(" + word + ".*){2,}");
-//        Matcher m = r.matcher(input);
-//        return m.find();
+        Pattern r = Pattern.compile(word + ".*" + word);
+        Matcher m = r.matcher(input);
+        return m.find();
     }
 }

@@ -9,7 +9,11 @@ import java.util.logging.Logger;
 
 public class Util {
 
-    public static Logger logger = Logger.getGlobal();
+    private static final Logger LOGGER = Logger.getGlobal();
+
+    public static Logger getLogger() {
+        return LOGGER;
+    }
 
     public static String getInput(String fileName) {
         StringBuilder sb = new StringBuilder();
@@ -21,7 +25,7 @@ public class Util {
             scanner.close();
             return sb.toString().trim();
         } catch (IOException ex) {
-            logger.log(Level.ALL, ex.getMessage(), ex);
+            LOGGER.log(Level.ALL, ex.getMessage(), ex);
         }
         return sb.toString();
     }

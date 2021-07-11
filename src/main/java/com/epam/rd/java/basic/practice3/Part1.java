@@ -1,13 +1,13 @@
 package com.epam.rd.java.basic.practice3;
 
 
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.security.SecureRandom;
 
 public class Part1 {
 
-    private static final Random rnd = new Random();
+    private static final SecureRandom rnd = new SecureRandom();
     private static Pattern pat;
 
     private static String convertN(String input, int part) {
