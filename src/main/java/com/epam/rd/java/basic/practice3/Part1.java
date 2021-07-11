@@ -13,23 +13,6 @@ public class Part1 {
     private static final Random rnd = new Random();
     private static Pattern pat;
 
-    public static void main(String[] args) {
-        final String FILENAME = "part1.txt";
-        String textData = Util.getInput(FILENAME);
-        System.out.println("Part1 demo.");
-        System.out.println("input:");
-        System.out.println(textData);
-        System.out.println();
-        System.out.println("convert1:");
-        System.out.println(convert1(textData));
-        System.out.println("convert2:");
-        System.out.println(convert2(textData));
-        System.out.println("convert3:");
-        System.out.println(convert3(textData));
-        System.out.println("convert4:");
-        System.out.println(convert4(textData));
-    }
-
     private static String convertN(String input, int part) {
         StringBuilder sb = new StringBuilder();
         try {
@@ -96,8 +79,11 @@ public class Part1 {
         StringBuilder domains = new StringBuilder();
         for (String line : lines) {
             Matcher m = pat.matcher(line);
-            if (m.find() && m.groupCount() == 6) {
-                domains.append(m.group(6)).append(';');
+            if (m.find()) {
+                String domain = m.group(6);
+                if (domains.indexOf(domain) == -1) {
+                    domains.append(domain).append(';');
+                }
             }
         }
         return domains.toString();
@@ -117,5 +103,22 @@ public class Part1 {
         }
         sb.delete(sb.length() - 2, sb.length()).append(System.lineSeparator());
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        final String FILENAME = "part1.txt";
+        String textData = Util.getInput(FILENAME);
+        System.out.println("Part1 demo.");
+        System.out.println("input:");
+        System.out.println(textData);
+        System.out.println();
+        System.out.println("convert1:");
+        System.out.println(convert1(textData));
+        System.out.println("convert2:");
+        System.out.println(convert2(textData));
+        System.out.println("convert3:");
+        System.out.println(convert3(textData));
+        System.out.println("convert4:");
+        System.out.println(convert4(textData));
     }
 }
