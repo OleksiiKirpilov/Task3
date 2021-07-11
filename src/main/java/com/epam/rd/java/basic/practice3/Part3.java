@@ -6,13 +6,12 @@ import java.util.regex.Pattern;
 public class Part3 {
 
     public static void main(String[] args) {
-        final String FILENAME = "part3.txt";
-        String textData = Util.getInput(FILENAME);
+        String textData = Util.getInput("part3.txt");
         System.out.println("Part3 demo.");
-        System.out.println("input:");
+        System.out.println("in:");
         System.out.println(textData);
         System.out.println();
-        System.out.println("convert:");
+        System.out.println("out:");
         System.out.println(convert(textData));
     }
 

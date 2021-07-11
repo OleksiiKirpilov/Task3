@@ -6,8 +6,7 @@ import java.util.regex.Pattern;
 public class Part2 {
 
     public static void main(String[] args) {
-        final String FILENAME = "part2.txt";
-        String textData = Util.getInput(FILENAME);
+        String textData = Util.getInput("part2.txt");
         System.out.println("Part2 demo.");
         System.out.println("input:");
         System.out.println(textData);

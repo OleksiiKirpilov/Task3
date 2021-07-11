@@ -8,6 +8,8 @@ public class Part5 {
             String r = decimal2Roman(n);
             System.out.printf("%d --> %s --> %d%n", n, r, roman2Decimal(r));
         }
+        String r = decimal2Roman(2021);
+        System.out.printf("%d --> %s --> %d%n", 2021, r, roman2Decimal(r));
     }
 
     public static String decimal2Roman(int dec) {
@@ -37,7 +39,9 @@ public class Part5 {
 
     private static int countNumbers(StringBuilder sb, String roman) {
         int count = 0;
-        for (int index = sb.indexOf(roman); index != -1; count++ ) {
+        int index = sb.indexOf(roman);
+        while (index != -1) {
+            count++;
             sb.delete(index, index + roman.length());
             index = sb.indexOf(roman);
         }
