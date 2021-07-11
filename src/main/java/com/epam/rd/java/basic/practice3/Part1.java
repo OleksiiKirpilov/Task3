@@ -71,11 +71,8 @@ public class Part1 {
         StringBuilder domains = new StringBuilder();
         for (String line : lines) {
             Matcher m = pat.matcher(line);
-            if (m.find()) {
-                String domain = m.group(6);
-                if (domains.indexOf(domain) == -1) {
-                    domains.append(domain).append(';');
-                }
+            if (m.find() && domains.indexOf(m.group(6)) == -1) {
+                domains.append(m.group(6)).append(';');
             }
         }
         return domains.toString();
