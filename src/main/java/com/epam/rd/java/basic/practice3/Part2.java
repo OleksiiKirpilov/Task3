@@ -51,7 +51,9 @@ public class Part2 {
                 sb.append(m.group(1)).append(", ");
             }
         }
-        sb.delete(sb.length() - 2, sb.length()).append(System.lineSeparator());
+        if (sb.length() > 2) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
         return sb.toString();
     }
 }
