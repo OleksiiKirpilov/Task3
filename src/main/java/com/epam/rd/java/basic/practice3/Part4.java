@@ -1,21 +1,20 @@
 package com.epam.rd.java.basic.practice3;
 
-import java.io.UnsupportedEncodingException;
 import java.security.*;
 
 public class Part4 {
 
     public static void main(String[] args)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+            throws NoSuchAlgorithmException {
         System.out.println("Part 4 demo.");
         System.out.println(hash("asdf", "MD5"));
         System.out.println(hash("asdf", "SHA-256"));
     }
 
     public static String hash(String input, String algorithm)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+            throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance(algorithm);
-        md.update(input.getBytes("cp1251"));
+        md.update(input.getBytes());
         byte[] hash = md.digest();
         StringBuilder sb = new StringBuilder();
         for (byte b : hash) {

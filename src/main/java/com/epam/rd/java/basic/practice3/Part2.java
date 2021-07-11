@@ -14,7 +14,6 @@ public class Part2 {
         System.out.println();
         System.out.println("convert:");
         System.out.println(convert(textData));
-        System.out.println(getWordsByLength(textData, 2));
     }
 
     public static String convert(String input) {
@@ -44,23 +43,7 @@ public class Part2 {
         sbMin.delete(sbMin.length() - 2, sbMin.length()).append(System.lineSeparator());
         sbMax.delete(sbMax.length() - 2, sbMax.length());
         sbMin.insert(0, "Min: ");
-        //String maxWords = getWordsByLength(input, maxLen);
         return sbMin.append("Max: ").append(sbMax).toString();
     }
 
-    private static String getWordsByLength(String input, int length) {
-        // doesn't work with length = 1
-        Pattern p = Pattern.compile("[^A-z]([A-z]{" + length + "})[^A-z]+");
-        Matcher m = p.matcher(input);
-        StringBuilder sb = new StringBuilder();
-        while (m.find()) {
-            if (sb.indexOf(m.group(1)) == -1) {
-                sb.append(m.group(1)).append(", ");
-            }
-        }
-        if (sb.length() > 2) {
-            sb.delete(sb.length() - 2, sb.length());
-        }
-        return sb.toString();
-    }
 }
