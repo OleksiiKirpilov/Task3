@@ -10,10 +10,11 @@ import java.util.regex.Pattern;
 
 public class Part1 {
 
-    private static final String FILENAME = "part1.txt";
     private static final Random rnd = new Random();
+    private static Pattern pat;
 
     public static void main(String[] args) {
+        final String FILENAME = "part1.txt";
         String textData = Util.getInput(FILENAME);
         System.out.println("Part1 demo.");
         System.out.println("input:");
@@ -33,13 +34,16 @@ public class Part1 {
         StringBuilder sb = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new StringReader(input));
-            String line = reader.readLine();
+            String line;
             while ((line = reader.readLine()) != null) {
+                if (!line.contains("@")) {
+                    continue;
+                }
                 String[] words = line.split(";");
                 sb = (processData(part, sb, words));
             }
         } catch (IOException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return sb.toString();
     }
@@ -75,31 +79,43 @@ public class Part1 {
 
     public static String convert3(String input) {
         StringBuilder sb = new StringBuilder();
-        try {
-            BufferedReader reader = new BufferedReader(new StringReader(input));
-            String line = reader.readLine();
-            while ((line = reader.readLine()) != null) {
-                //String[] words = line.split(";");
-                //sb = (processData(part, sb, words));
-                Pattern p = Pattern.compile("(.+;.+;)(.+@.+)$");
-                Matcher m = p.matcher(line);
-
-
-                System.out.println(line);
-
-            }
-        } catch (IOException e) {
-            System.out.println(e);
+        pat = Pattern.compile("^(\\S+);(\\S+)\\s(\\S+);((\\S+)@(\\S+))$");
+        String[] lines = input.split(System.lineSeparator());
+        String domains = getDomains(lines);
+        for (String domain : domains.split(";")) {
+            sb.append(getLoginsForDomain(domain, lines));
         }
         return sb.toString();
-
-
-
-
-       // return null; //convertN(input, 3);
     }
 
     public static String convert4(String input) {
         return convertN(input, 4);
+    }
+
+    private static String getDomains(String[] lines) {
+        StringBuilder domains = new StringBuilder();
+        for (String line : lines) {
+            Matcher m = pat.matcher(line);
+            if (m.find() && m.groupCount() == 6) {
+                domains.append(m.group(6)).append(';');
+            }
+        }
+        return domains.toString();
+    }
+
+    // mail.com ==> ivanov, bush
+    private static String getLoginsForDomain(String domain, String[] lines) {
+        StringBuilder sb = new StringBuilder(domain);
+        sb.append(" ==> ");
+        Pattern patDomain = Pattern.compile("^(\\S+);(\\S+)\\s(\\S+);((\\S+)@(" +
+                domain + "))$");
+        for (String s : lines) {
+            Matcher m = patDomain.matcher(s);
+            if (m.find()) {
+                sb.append(m.group(1)).append(", ");
+            }
+        }
+        sb.delete(sb.length() - 2, sb.length()).append(System.lineSeparator());
+        return sb.toString();
     }
 }
