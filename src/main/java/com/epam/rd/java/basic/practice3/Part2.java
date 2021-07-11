@@ -36,8 +36,9 @@ public class Part2 {
             }
         }
         sb.delete(sb.length() - 2, sb.length()).append(System.lineSeparator());
+        sb.insert(0, "Min: ");
         String maxWords = getWordsByLength(input, maxLen);
-        return sb.append(maxWords).toString();
+        return sb.append("Max: ").append(maxWords).toString();
     }
 
     private static String getWordsByLength(String input, int length) {
