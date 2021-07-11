@@ -15,18 +15,13 @@ public class Part1 {
 
     private static String convertN(String input, int part) {
         StringBuilder sb = new StringBuilder();
-        try {
-            BufferedReader reader = new BufferedReader(new StringReader(input));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!line.contains("@")) {
-                    continue;
-                }
-                String[] words = line.split(";");
-                sb = (processData(part, sb, words));
+        String[] lines = input.split(System.lineSeparator());
+        for (String line : lines) {
+            if (!line.contains("@")) {
+                continue;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            String[] words = line.split(";");
+            sb = processData(part, sb, words);
         }
         return sb.toString();
     }
