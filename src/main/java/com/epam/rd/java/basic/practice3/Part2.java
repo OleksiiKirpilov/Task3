@@ -14,31 +14,38 @@ public class Part2 {
         System.out.println();
         System.out.println("convert:");
         System.out.println(convert(textData));
+        System.out.println(getWordsByLength(textData, 2));
     }
 
     public static String convert(String input) {
-        Pattern p = Pattern.compile("([A-z]+)");
+        Pattern p = Pattern.compile("[^A-z]?([A-z]+)[^A-z]?");
         Matcher m = p.matcher(input);
         int minLen = 0;
         int maxLen = 0;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sbMin = new StringBuilder();
+        StringBuilder sbMax = new StringBuilder();
         while (m.find()) {
             String word = m.group(1);
             if (minLen == 0 || word.length() < minLen) {
                 minLen = word.length();
-                sb.setLength(0);
-                sb.append(word).append(", ");
-            } else if (word.length() == minLen && sb.indexOf(word) == -1) {
-                sb.append(word).append(", ");
+                sbMin.setLength(0);
+                sbMin.append(word).append(", ");
+            } else if (word.length() == minLen && sbMin.indexOf(word) == -1) {
+                sbMin.append(word).append(", ");
             }
             if (maxLen == 0 || word.length() > maxLen) {
                 maxLen = word.length();
+                sbMax.setLength(0);
+                sbMax.append(word).append(", ");
+            } else if (word.length() == maxLen && sbMax.indexOf(word) == -1) {
+                sbMax.append(word).append(", ");
             }
         }
-        sb.delete(sb.length() - 2, sb.length()).append(System.lineSeparator());
-        sb.insert(0, "Min: ");
-        String maxWords = getWordsByLength(input, maxLen);
-        return sb.append("Max: ").append(maxWords).toString();
+        sbMin.delete(sbMin.length() - 2, sbMin.length()).append(System.lineSeparator());
+        sbMax.delete(sbMax.length() - 2, sbMax.length());
+        sbMin.insert(0, "Min: ");
+        //String maxWords = getWordsByLength(input, maxLen);
+        return sbMin.append("Max: ").append(sbMax).toString();
     }
 
     private static String getWordsByLength(String input, int length) {
