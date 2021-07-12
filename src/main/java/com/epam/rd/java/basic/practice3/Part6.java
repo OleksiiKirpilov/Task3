@@ -14,11 +14,12 @@ public class Part6 {
     }
 
     public static String convert(String input) {
-        Pattern p = Pattern.compile("([A-zА-яЁё]+)");
+        Pattern p = Pattern.compile("([A-zА-яЁё]+).*?");
         Matcher m = p.matcher(input);
         StringBuilder sb = new StringBuilder(input);
         int underscoresCount = 0;
         while (m.find()) {
+            //System.out.println(m.group(1));
             if (isRecurring(m.group(1), input)) {
                 sb.insert(m.start(1) + underscoresCount++, '_');
             }
@@ -27,20 +28,7 @@ public class Part6 {
     }
 
     private static boolean isRecurring(String word, String input) {
-//        int index = 0;
-//        int count = 0;
-//        while (count < 2) {
-//            index = input.indexOf(word, index);
-//            if (index == -1) {
-//                return false;
-//            }
-//            count++;
-//            index += word.length();
-//        }
-//        return true;
-
-
-        Pattern r = Pattern.compile(word + ".*" + word);
+        Pattern r = Pattern.compile("\\s" + word + "\\s+.*" + word, Pattern.DOTALL);
         Matcher m = r.matcher(input);
         return m.find();
     }

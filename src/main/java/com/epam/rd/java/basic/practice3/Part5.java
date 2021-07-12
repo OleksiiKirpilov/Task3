@@ -30,12 +30,12 @@ public class Part5 {
         int number = 0;
         StringBuilder r = new StringBuilder(roman);
         for (int i = 0; i < romans.length; ++i) {
-            number += countNumbers(r, romans[i]) * decimals[i];
+            number += processNumber(r, romans[i]) * decimals[i];
         }
         return number;
     }
 
-    private static int countNumbers(StringBuilder sb, String roman) {
+    private static int processNumber(StringBuilder sb, String roman) {
         int count = 0;
         int index = sb.indexOf(roman);
         while (index != -1) {

@@ -18,12 +18,8 @@ public class Part4 {
         byte[] hash = md.digest();
         StringBuilder sb = new StringBuilder();
         for (byte b : hash) {
-            sb.append(byteToHex(b));
+            sb.append(String.format("%02X", b));
         }
         return sb.toString();
-    }
-
-    private static String byteToHex(byte b) {
-        return String.format("%02X", b);
     }
 }

@@ -16,13 +16,13 @@ public class Part3 {
     }
 
     public static String convert(String input) {
-        Pattern p = Pattern.compile("([A-zА-яЁё]+?)([A-zА-яЁё]{2,})");
+        Pattern p = Pattern.compile("([A-zА-яЁё]+?)[A-zА-яЁё]{2,}");
         Matcher m = p.matcher(input);
         StringBuilder sb = new StringBuilder(input);
         while (m.find()) {
-            char c = sb.charAt(m.start(1));
+            char c = sb.charAt(m.start());
             c = Character.isLowerCase(c) ? Character.toUpperCase(c) : Character.toLowerCase(c);
-            sb.setCharAt(m.start(1), c);
+            sb.setCharAt(m.start(), c);
         }
         return sb.toString();
     }
