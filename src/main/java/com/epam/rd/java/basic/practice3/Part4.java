@@ -1,6 +1,7 @@
 package com.epam.rd.java.basic.practice3;
 
-import java.security.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class Part4 {
 

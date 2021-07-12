@@ -1,9 +1,9 @@
 package com.epam.rd.java.basic.practice3;
 
 
+import java.security.SecureRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.security.SecureRandom;
 
 public class Part1 {
 

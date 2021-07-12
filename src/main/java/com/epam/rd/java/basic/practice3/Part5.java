@@ -25,7 +25,7 @@ public class Part5 {
     }
 
     public static int roman2Decimal(String roman) {
-        String[] romans = {"CM","CD", "XC", "XL", "IX", "IV", "M", "D", "C", "L", "X", "V", "I"};
+        String[] romans = {"CM", "CD", "XC", "XL", "IX", "IV", "M", "D", "C", "L", "X", "V", "I"};
         int[] decimals = {900, 400, 90, 40, 9, 4, 1000, 500, 100, 50, 10, 5, 1};
         int number = 0;
         StringBuilder r = new StringBuilder(roman);

@@ -14,7 +14,7 @@ public class Part6 {
     }
 
     public static String convert(String input) {
-        Pattern p = Pattern.compile("([A-zА-яЁё]+).*?");
+        Pattern p = Pattern.compile("([A-zА-яЁё]+)");
         Matcher m = p.matcher(input);
         StringBuilder sb = new StringBuilder(input);
         int underscoresCount = 0;

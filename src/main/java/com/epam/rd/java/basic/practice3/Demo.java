@@ -3,7 +3,7 @@ package com.epam.rd.java.basic.practice3;
 import java.security.NoSuchAlgorithmException;
 
 public class Demo {
-    
+
     public static void main(String[] args) throws NoSuchAlgorithmException {
         Part1.main(args);
         Part2.main(args);
