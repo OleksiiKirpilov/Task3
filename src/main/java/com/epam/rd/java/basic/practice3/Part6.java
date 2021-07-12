@@ -19,7 +19,6 @@ public class Part6 {
         StringBuilder sb = new StringBuilder(input);
         int underscoresCount = 0;
         while (m.find()) {
-            //System.out.println(m.group(1));
             if (isRecurring(m.group(1), input)) {
                 sb.insert(m.start(1) + underscoresCount++, '_');
             }
