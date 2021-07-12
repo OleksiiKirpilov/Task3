@@ -27,7 +27,7 @@ public class Part6 {
     }
 
     private static boolean isRecurring(String word, String input) {
-        Pattern r = Pattern.compile("\\s" + word + "\\s+.*" + word, Pattern.DOTALL);
+        Pattern r = Pattern.compile("\\s" + word + "\\s+.*" + word + "\\s", Pattern.DOTALL);
         Matcher m = r.matcher(input);
         return m.find();
     }
