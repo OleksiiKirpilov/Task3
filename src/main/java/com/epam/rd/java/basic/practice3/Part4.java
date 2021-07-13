@@ -19,12 +19,12 @@ public class Part4 {
         byte[] hash = md.digest();
         StringBuilder sb = new StringBuilder();
         for (byte b : hash) {
-            sb = byteToHex(b, sb);
+            byteToHexSB(b, sb);
         }
         return sb.toString();
     }
 
-    private static StringBuilder byteToHex(byte number, StringBuilder sb) {
+    private static void byteToHexSB(byte number, StringBuilder sb) {
         // convert signed byte to unsigned int
         int n = 256 + number & 255;
         char highNibble = (char) (n / 16 + '0');
@@ -32,6 +32,5 @@ public class Part4 {
         highNibble += (highNibble > '9') ? 7 : 0;
         lowNibble += (lowNibble > '9') ? 7 : 0;
         sb.append(highNibble).append(lowNibble);
-        return sb;
     }
 }
