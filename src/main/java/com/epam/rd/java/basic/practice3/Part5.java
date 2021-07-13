@@ -1,8 +1,5 @@
 package com.epam.rd.java.basic.practice3;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Part5 {
 
     public static void main(String[] args) {

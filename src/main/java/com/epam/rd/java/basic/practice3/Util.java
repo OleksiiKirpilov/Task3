@@ -25,7 +25,7 @@ public class Util {
             scanner.close();
             return sb.toString().trim();
         } catch (IOException ex) {
-            getLogger().log(Level.ALL, ex.getMessage(), ex);
+            getLogger().log(Level.SEVERE, ex.getMessage(), ex);
         }
         return sb.toString();
     }
