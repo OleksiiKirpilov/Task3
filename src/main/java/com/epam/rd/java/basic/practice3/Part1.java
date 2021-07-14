@@ -95,8 +95,7 @@ public class Part1 {
     }
 
     public static void main(String[] args) {
-        final String FILENAME = "part1.txt";
-        String textData = Util.getInput(FILENAME);
+        String textData = Util.getInput("part1.txt");
         System.out.println("Part1 demo.");
         System.out.println("input:");
         System.out.println(textData);

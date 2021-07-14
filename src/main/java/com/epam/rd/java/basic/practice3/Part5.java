@@ -1,6 +1,12 @@
 package com.epam.rd.java.basic.practice3;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Part5 {
+
+    private static final int[] decimalValues = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private static final Pattern romansPattern = Pattern.compile("M|CM|D|CD|C|XC|L|XL|X|IX|V|IV|I");
 
     public static void main(String[] args) {
         System.out.println("Part 5 demo.");
@@ -12,10 +18,9 @@ public class Part5 {
 
     public static String decimal2Roman(int dec) {
         String[] romans = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-        int[] decimals = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
         StringBuilder out = new StringBuilder();
-        for (int i = 0; i < decimals.length; ++i) {
-            int d = decimals[i];
+        for (int i = 0; i < decimalValues.length; ++i) {
+            int d = decimalValues[i];
             while (dec >= d) {
                 dec -= d;
                 out.append(romans[i]);
@@ -24,25 +29,16 @@ public class Part5 {
         return out.toString();
     }
 
-    public static int roman2Decimal(String roman) {
-        String[] romans = {"CM", "CD", "XC", "XL", "IX", "IV", "M", "D", "C", "L", "X", "V", "I"};
-        int[] decimals = {900, 400, 90, 40, 9, 4, 1000, 500, 100, 50, 10, 5, 1};
-        int number = 0;
-        StringBuilder r = new StringBuilder(roman);
-        for (int i = 0; i < romans.length; ++i) {
-            number += processNumber(r, romans[i]) * decimals[i];
+    private static int roman2Decimal(String r) {
+        final Matcher matcher = romansPattern.matcher(r);
+        final String romanString = "--M-CM--D-CD--C-XC--L-XL--X-IX--V-IV--I-";
+        int result = 0;
+        while (matcher.find()) {
+            Matcher m = Pattern.compile("-(" + matcher.group() + ")-").matcher(romanString);
+            m.find();
+            result += decimalValues[m.start() / 3];
         }
-        return number;
+        return result;
     }
 
-    private static int processNumber(StringBuilder sb, String roman) {
-        int count = 0;
-        int index = sb.indexOf(roman);
-        while (index != -1) {
-            count++;
-            sb.delete(index, index + roman.length());
-            index = sb.indexOf(roman);
-        }
-        return count;
-    }
 }
