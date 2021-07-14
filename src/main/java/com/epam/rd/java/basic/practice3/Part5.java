@@ -29,7 +29,7 @@ public class Part5 {
         return out.toString();
     }
 
-    private static int roman2Decimal(String r) {
+    public static int roman2Decimal(String r) {
         final Matcher matcher = romansPattern.matcher(r);
         final String romanString = "--M-CM--D-CD--C-XC--L-XL--X-IX--V-IV--I-";
         int result = 0;
