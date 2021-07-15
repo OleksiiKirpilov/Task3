@@ -34,9 +34,8 @@ public class Part5 {
         final String romanString = "--M-CM--D-CD--C-XC--L-XL--X-IX--V-IV--I-";
         int result = 0;
         while (matcher.find()) {
-            Matcher m = Pattern.compile("-(" + matcher.group() + ")-").matcher(romanString);
-            m.find();
-            result += decimalValues[m.start() / 3];
+            int index = romanString.indexOf(matcher.group() + '-') / 3;
+            result += decimalValues[index];
         }
         return result;
     }
