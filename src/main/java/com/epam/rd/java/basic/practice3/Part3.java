@@ -16,7 +16,7 @@ public class Part3 {
     }
 
     public static String convert(String input) {
-        Pattern p = Pattern.compile("([A-zА-яЁё]+?)[A-zА-яЁё]{2,}");
+        Pattern p = Pattern.compile("(\\w+?)\\w{2,}", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher m = p.matcher(input);
         StringBuilder sb = new StringBuilder(input);
         while (m.find()) {
