@@ -30,11 +30,11 @@ public class Part5 {
     }
 
     public static int roman2Decimal(String r) {
-        final Matcher matcher = romansPattern.matcher(r);
+        final Matcher m = romansPattern.matcher(r);
         final String romanString = "--M-CM--D-CD--C-XC--L-XL--X-IX--V-IV--I-";
         int result = 0;
-        while (matcher.find()) {
-            int index = romanString.indexOf(matcher.group() + '-') / 3;
+        while (m.find()) {
+            int index = romanString.indexOf(m.group() + '-') / 3;
             result += decimalValues[index];
         }
         return result;
